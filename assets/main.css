@@ -1,0 +1,65 @@
+.carousel__item {
+    width: 200%;
+   
+ }
+ .carousel__slide--active {
+   opacity: 1;
+   transform: rotateY(0) scale(1.1);
+  
+ }
+ .carousel__slide--active .heropa{
+    animation: p 3s ;
+    animation-iteration-count: 1;  
+ }
+ 
+ 
+ .carousel__slide--active .herop{
+    animation: pa 3s ;
+    animation-iteration-count: 1;  
+ }
+ 
+ 
+ @keyframes p {
+   from {
+      transform: translateY(-100px);
+       }
+   to { transform: scale(0px); }
+ }
+ @keyframes pa {
+   from {
+      transform: translateY(100px);
+       }
+   to { transform: scale(0px); }
+ }
+ 
+ 
+ 
+ 
+ 
+     
+ 
+     .animatio {
+       
+         
+         animation-duration: 2s;
+         animation-name: waliu;
+         
+     }
+ 
+     @keyframes waliu {
+         from{ 
+             opacity: 0;
+             transform: rotate(90deg);
+             transform: translateY(300px);
+             color: aqua;
+         }
+ 
+         to{
+         
+         opacity: 1;
+          transform: rotate(0deg);
+          transform: translateY(0px);
+          color: black;
+         }
+     }
+ 
