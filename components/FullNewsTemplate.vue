@@ -17,7 +17,7 @@
         </div>   
         </div>
         
-        <TableLatestNews class="  text-[poppins] "></TableLatestNews>
+      
         <NavigationFooter></NavigationFooter>
 
     </div>
@@ -43,7 +43,7 @@ const newsId = route.params.title;
 onMounted(async () => {
     const response = await fetch(`http://localhost:3500/${props.endpoint}`);
     allNews.value = await response.json();
-    log
+   
   
 });
 </script>

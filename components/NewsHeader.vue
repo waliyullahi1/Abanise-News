@@ -29,20 +29,20 @@
               class=" duration-700 ease-in-out transform  w-full  place-contnt-center px-3  lg:h-7   justify-ed items-center block sm:flex">
               <ul @click=" rotate = true" class=" lg:bg-transparent text-[13px] text-primary w-fit  flex gap-4">
                 <li class="  h-full py w-full  lg:mt-0 ext-[11px] boder border-transparent  transform duration-200 ease-in-out  ">
-                  <router-link to="/news" class="px-1  t md:hover:border-b py-2">Home</router-link>
+                  <router-link to="/" class="px-1  t md:hover:border-b py-2">Home</router-link>
                 </li>
 
                 <li class="  h-full py  lg:mt-0 boder border-transparent text-[13px]  transform duration-200 ease-in-out  ">
-                  <router-link to="/news/Admission" class="px-1 md:hover:border-b  py-2">Admission</router-link>
+                  <router-link to="/Admission" class="px-1 md:hover:border-b  py-2">Admission</router-link>
                 </li>
 
 
                 <li class="  h-full py  lg:mt-0 boder border-transparent  transform duration-200 ease-in-out  ">
-                  <router-link to="/news/Post-utme" class="px-1 whitespace-nowrap md:hover:border-b py-2">Post-UTME</router-link>
+                  <router-link to="/Post-utme" class="px-1 whitespace-nowrap md:hover:border-b py-2">Post-UTME</router-link>
                 </li>
 
                 <li class="  h-full py  lg:mt-0 boder border-transparent  transform duration-200 ease-in-out  ">
-                  <router-link to="/news/jamb" class="px-1 md:hover:border-b py-2">JAMB</router-link>
+                  <router-link to="/jamb" class="px-1 md:hover:border-b py-2">JAMB</router-link>
                 </li>
 
 

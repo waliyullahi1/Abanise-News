@@ -19,13 +19,13 @@
 
 
                 <div class=" h-full   group justify-center items-center gap-2">
-                  <NuxtLink target="_blank" :to="`Admission/${item._id}`">
+                  <NuxtLink target="_blank" :to="`/${item.route}`">
                     <h2 class="hover:text-primary text-[15px] sm:text-xl mb-4 font-normal ">{{ item.title }}</h2>
                   </NuxtLink>
                   <div class=" sm:gap-6 gap-3">
                     <div class="sm:px-5 float-left">
-                      <NuxtLink target="_blank" :to="`${props.routes}/${item._id}`"
-                        class=" grou bg-black min-h-60 gap-2 m overflow-hidden  flex justify-center items-center h ">
+                      <NuxtLink target="_blank" :to="`${props.routes}/${item.route}`"
+                        class=" grou bg-black  gap-2 m overflow-hidden  flex justify-center items-center h ">
                         <div class="  h-40  w-full"></div>
                         <img v-bind:src="item.image" class="   hover:opacity-30 duration-500  w-72 " alt="">
                         <img src="@/assets/abanisee1.png" alt=""
@@ -38,7 +38,7 @@
                       <p v-html="truncateText(extractFirstElements(item.content))" class=" text-[14px]  fn  divClass">
                       </p>
 
-                      <NuxtLink target="_blank" :to="`${props.routes}/${item._id}`">
+                      <NuxtLink target="_blank" :to="`${props.routes}/${item.route}`">
                         <button
                           class=" mt-2 py-1 px-2 text-[14px] duration-500 text-white hover:bg-gray-500 bg-primary">Read
                           More »</button>
@@ -100,7 +100,7 @@
     </div>
     
 
-
+    <NavigationLoadingJs :isJsFinishedRun="loading"  ></NavigationLoadingJs>
 
 
     <NavigationFooter></NavigationFooter>
@@ -109,7 +109,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
+let loading = false
 
 const props = defineProps({
 
@@ -153,9 +153,12 @@ const updateImageUrls = async () => {
 }
 
 const fetchData = async () => {
+  loading = true;
   const response = await fetch(`http://localhost:3500/${props.endpoint}`);
   news.value = await response.json();
   await updateImageUrls();
+  loading = false;
+   console.log(loading.value);
 }
 
 onMounted(fetchData, );
@@ -214,6 +217,8 @@ const previousPage = () => {
     router.push({ path: '/news', query: { page: currentPage.value - 1 } });
   }
 };
+
+
 </script>
 
 

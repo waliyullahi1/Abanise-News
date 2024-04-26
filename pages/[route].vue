@@ -6,7 +6,8 @@
 
 <script setup>
 const route = useRoute();
-const title = route.params.title;
+const title = route.params.route;
+console.log(title);
 </script>
 
 <style>

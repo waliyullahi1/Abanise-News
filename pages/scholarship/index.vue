@@ -1,11 +1,11 @@
 <template>
   <div>
 
-    <NewsTemplate header=" JAMB" routes="JAMB"
+    <NewsTemplate header="Scholarship" routes="schorlarship"
       paragraph=""
       :admissionNewsData="paginatedData"
       :totalPages="totalPages"
-      endpoint="jambNews"
+      endpoint="scholarshipNews"
       ></NewsTemplate>
   </div>
 </template>
@@ -20,15 +20,6 @@ const perPage = ref(6);
 const news = ref([]);
 
 const route = useRoute()
-
-
-
-
-
-
-
-// updateImageUrls();
-
 
 
 

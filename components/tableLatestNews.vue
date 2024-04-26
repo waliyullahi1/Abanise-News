@@ -46,23 +46,7 @@ const fetchData = async () => {
 fetchData()
 let scrollHandler = null
 
-// onMounted(() => {
-//   scrollHandler = function() {
-//     const myDiv = document.getElementById('myDiv')
-//     const footer = document.getElementById('footer')
-//     const footerRect = footer.getBoundingClientRect()
 
-//     if (footerRect.top <= window.innerHeight) {
-//       myDiv.style.position = 'sticky'
-//       myDiv.style.bottom = '-20'
-//     } else {
-//       myDiv.style.position = 'sticky'
-//       myDiv.style.top = '0'
-//     }
-//   }
-
-//   window.addEventListener('scroll', scrollHandler)
-// })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', scrollHandler)

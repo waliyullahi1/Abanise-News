@@ -1,6 +1,6 @@
 <template>
   <div>
-
+   
     <NewsTemplate header=" Admission" routes="Admission"
       paragraph="Admission: To find out about undergraduate and graduate degree admissions."
       :admissionNewsData="paginatedData"

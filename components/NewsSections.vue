@@ -11,7 +11,7 @@
             <div v-if="news.length > 0"
               class="sm:flex gap-3 sm:px-10 py-5 px-4 border-b-2  justify-start   items-center">
               <div class=" sm:w-2/5 w-full group  py-3 flex justify-center items-center ">
-                <NuxtLink target="_blank" :to="`news/${props.newstype}/${news[0]._id}`"
+                <NuxtLink target="_blank" :to="`${props.newstype}/${news[0]._id}`"
                   class=" grou bg-black gap-2 m overflow-hidden  flex justify-center items-center h ">
                   <div class=" h-32  w-full"></div>
                   <img v-bind:src="news[0].image" class="v hover:opacity-30 duration-500  " alt="">
@@ -26,7 +26,7 @@
 
                 <h3 v-html="truncateText(extractFirstElements(news[0].content))"
                   class=" text-[13px]  sm:text-[15px] ov"></h3>
-                <NuxtLink target="_blank" :to="`news/${props.newstype}/${news[0]._id}`">
+                <NuxtLink target="_blank" :to="`${props.newstype}/${news[0].route}`">
 
                   <button class=" mt-2 py-1 px-2 text-[14px] duration-500 text-white hover:bg-gray-500 bg-primary">Read
                     More »</button>
@@ -42,7 +42,7 @@
                 class="flex gap-2 justify-center  items-center">
                
                   <div class=" sm:w-2/5 w-20 group  py-3 flex justify-center items-center ">
-                    <NuxtLink target="_blank" :to="`news/${props.newstype}/${news[0]._id}`"
+                    <NuxtLink target="_blank" :to="`${props.newstype}/${news[0].route}`"
                       class=" grou bg-black  gap-2 m overflow-hidden  flex justify-center items-center h ">
                       <div class=" hfull  w-full"></div>
                       <img v-bind:src="item.image" class="v hover:opacity-30 duration-500  " alt="">
@@ -54,7 +54,7 @@
                   </div>
                
                 <div class=" w-3/5">
-                  <NuxtLink target="_blank" :to="`news/${props.newstype}/${news[0]._id}`">
+                  <NuxtLink target="_blank" :to="`${props.newstype}/${news[0].route}`">
 
                     <h3 class=" text-[14px] sm:py-4 cursor-pointer hover:text-green-700   px-2 font-[500]">{{ item.title
                       }}</h3>

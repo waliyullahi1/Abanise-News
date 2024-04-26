@@ -3,7 +3,7 @@
 
     <NewsHeader></NewsHeader>
     <div class=" pt-36">
-      <!-- <TableLatestNews class="  text-[poppins]  " ></TableLatestNews> -->
+      <TableLatestNews class="  text-[poppins]  " ></TableLatestNews>
       <section class=" lg:w-[88%] w-[96%]  md:pt-0   mt- mx-auto">
         <h2 class="text-[20px] font-medium">Latest News </h2>
 
@@ -18,7 +18,7 @@
                 <div v-for="item in paginatedData" :key="item.title"
                   class="sm:block gap-3  p-2 justify-start items-center">
                   <div class="h-full group justify-center items-center gap-2">
-                    <nuxt-link target="_blank" :to="`/${item.route}`"
+                    <nuxt-link target="_blank" :to="`${item.route}`"
                       class="group bg-black gap-2 m overflow-hidden flex justify-center items-center h">
                       <div class="h-32 w-full"></div>
                       <img v-bind:src="item.image" class="hover:opacity-30 duration-500 w-72" alt="">
@@ -44,7 +44,7 @@
               <div class="flex w-1/2">
 
 
-                <div class=" flex gap-4 =">
+                <div class=" flex  flex gap-4 div-class  overflow-scroll gap-4 =">
                   <button class="   flex " v-for="number in totalPages" :key="number" @click="goToPage(number)">
                     <nuxt-link class="h-fit text-[18px] font-medium " :to="{ path: '/', query: { page: number } }">
                       <p :class="{ 'bg-primary text-white': currentPage === number, 'bg-white': currentPage !== number }"
@@ -73,9 +73,8 @@
     </div>
 
 
-    <!-- <NewsSections :myProp="sectionpaginatedData" newstype="Admission" :endpoint="`admissionNews`" header="Latest Admission"></NewsSections> 
-    <NewsSections  newstype="jamb" :endpoint="`jambNews`" header="Jamb"></NewsSections>  -->
-
+    <NewsSections :myProp="sectionpaginatedData" newstype="Admission" :endpoint="`admissionNews`" header="Latest Admission"></NewsSections> 
+    <NewsSections  newstype="jamb" :endpoint="`jambNews`" header="Jamb"></NewsSections> 
     <NavigationFooter></NavigationFooter>
   </div>
 </template>
@@ -83,7 +82,6 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
 
 
 
@@ -125,9 +123,11 @@ const replaceSpace = (words) => {
   console.log('finished');;
 }
 const fetchData = async () => {
+  
   const response = await fetch(`http://localhost:3500/news`);
   news.value = await response.json();
    console.log(news.value)
+ 
   await updateImageUrls();
 }
 
@@ -183,7 +183,19 @@ const previousPage = () => {
   overflow: hidden;
 }
 
+.div-class {
+  /* Enables scrolling if content overflows */
+  overflow: auto;
 
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 .router-link-active {
   background-color: #164b3b;

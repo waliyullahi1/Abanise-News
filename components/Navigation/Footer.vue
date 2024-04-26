@@ -24,46 +24,7 @@
           <p class="sm:text-[15px] text-[13px] text-white">We are the best source. With a platform that is trusted by Paystack , you can shop online with complete confidence and no worries</p>
         </div>
 
-       <div class=" w-full md:flex hidden">
-         <div class="md:grid md:grid-cols-3 flex flex-col justify-center text-white  ">
-          
-
-           <div class="mt-5 t">
-                <p class=" text-[15px] font-semld mb-5 ">PRODUCT</p>
-                <div class="flex flex-col text-[14px]  gap-2">
-                    <a href="#section" class=" hover:text-secondary  w-fit " >Vend Jamb Pin <router-link to="/1/Waec/result%20checker"></router-link> </a>
-                    <a href="#section" class=" hover:text-secondary  w-fit "><router-link to="/1/Waec/result%20checker">Waec scratch card</router-link> </a>
-                      <a href="#section" class=" hover:text-secondary  w-fit "><router-link to="/4/GCEWAEC/result%20checker">Waec GCE epin</router-link></a>
-                     <a href="#section" class=" hover:text-secondary  w-fit "><router-link to="/2/Neco/result%20checker">Neco scratch card</router-link> </a>
-                       <a href="#section" class=" hover:text-secondary  w-fit ">Nabteb scratch card </a>
-                         <a href="#section" class=" hover:text-secondary  w-fit ">Nabteb GCE Epin </a>
-                </div>
-           </div>
-
-          <div class="mt-5">
-             <p class=" text-[15px] mb-5 te ">USEFUL LINKs</p>
-                 <div class=" text-[15px]  flex-col  flex gap-2 ">
-                    <a href="#how" class=" hover:text-secondary w-fit "> <router-link to="/1/Waec/result%20checker">How it is works </router-link></a>
-                    <a href="" class=" hover:text-secondary  w-fit  ">Blogs </a>
-                      <a href="" class="hover:text-secondary    w-fit ">Princing</a>
-                     <a href="" class=" hover:text-secondary   w-fit ">Helping </a>
-                </div>
-           </div>
-
-           <div class="mt-5">
-             <p class="w-fit text-[15px] mb-5 font-sed  ">CONTACT</p>
-                 <div class="flex flex-col text-[14px] gap-2">
-                    <a href="" class=" w-fit  hover:text-secondary flex  "> 
-                     <img src="@/assets/image/Location.svg" class="w-5"/> 
-                      Ibadan Road, Arround Total FIlling Station, Iwo </a>
-                    <a href=""  class="  w-fit flex hover:text-secondary   "><img src="@/assets/image/phone.svg" class="w-7"/>07068393706, 08134105599 </a>
-                     
-                </div>
-           </div>
-
-           
-         </div>
-       </div>
+       
       
       </div>
       <div class="flex  text-center text-white justify-center items-center gap-1"> 
