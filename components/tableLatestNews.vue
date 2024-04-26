@@ -37,10 +37,15 @@ const limit = perPage.value
 const skip = (page - 1) * limit
 
 const fetchData = async () => {
-  const response = await fetch(`http://localhost:3500/news`);
+  try {
+     const response = await fetch(`http://localhost:3500/news`);
   news.value = await response.json();
  
-  currentPage.value = page
+  currentPage.value = page 
+  } catch (error) {
+    
+  }
+
 }
 
 fetchData()

@@ -143,22 +143,38 @@ const paginatedData = computed(() => {
 });
 
 const updateImageUrls = async () => {
-  let paginatedNews = paginatedData.value;
+  try {
+    let paginatedNews = paginatedData.value;
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
     const imageResponse = await fetch(`http://localhost:3500/${props.endpoint}/${element.image}`);
     element.image = imageResponse.url;
     return element;
   }));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
-}
+
+    // parse the JSON
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+  }
 
 const fetchData = async () => {
-  loading = true;
-  const response = await fetch(`http://localhost:3500/${props.endpoint}`);
+  try {
+    loading = true;
+  const response = await fetch(`http://localhost:3500/${props.endpoint}`,{
+     method : "GET",
+     headers: {'Content-Type':'application/json'},
+     credentials:'include',
+     
+   });
   news.value = await response.json();
   await updateImageUrls();
   loading = false;
    console.log(loading.value);
+  } catch (error) {
+    
+  }
+  
 }
 
 onMounted(fetchData, );

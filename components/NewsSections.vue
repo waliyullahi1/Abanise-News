@@ -70,9 +70,6 @@
         </div>
 
       </div>
-
-
-
     </div>
 
 
@@ -83,7 +80,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { useMyStore } from '~/stores/myStore'
+
 const props = defineProps({
   myProp: Array,
   newstype: String,
@@ -102,19 +99,38 @@ const paginatedData = computed(() => {
 
 const updateImageUrls = async () => {
   let paginatedNews = paginatedData.value;
-
-  const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`);
+  try {
+    const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
+    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`,{
+     method : "GET",
+     headers: {'Content-Type':'application/json'},
+     credentials:'include',
+     
+   });
     element.image = imageResponse.url;
     return element;
   }));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
-}
+
+  } catch (error) {
+    
+  }
+  }
 
 const fetchData = async () => {
-  const response = await fetch(`http://localhost:3500/${props.endpoint}`);
+  try {
+   const response = await fetch(`http://localhost:3500/${props.endpoint}`,{
+     method : "GET",
+     headers: {'Content-Type':'application/json'},
+     credentials:'include',
+     
+   });
   news.value = await response.json();
-  await updateImageUrls();
+  await updateImageUrls(); 
+  } catch (error) {
+    
+  }
+  
 }
 
 onMounted(fetchData);
@@ -124,19 +140,29 @@ const currentPage = computed(() => {
   return 1
 })
 const extractFirstElements = (htmlContent, limit) => {
-  let tempDiv = document.createElement("div");
+  try {
+      let tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlContent;
   let allElements = Array.from(tempDiv.children);
   let firstElements = allElements.slice(0, limit);
   return firstElements.map(el => el.outerHTML).join('');
+  } catch (error) {
+    
+  }
+
 }
 
 const truncateText = (text) => {
-  let words = text.split(' ');
+  try {
+    let words = text.split(' ');
   if (words.length > 8) {
     words = words.slice(0, 8);
     return words.join(' ') + '...';
+  } 
+  } catch (error) {
+    
   }
+ 
 }
 
 

@@ -68,7 +68,6 @@
         </div>
 
 
-
       </section>
     </div>
 
@@ -106,14 +105,24 @@ const paginatedData = computed(() => {
 });
 
 const updateImageUrls = async () => {
-  let paginatedNews = paginatedData.value;
+  try {
+     let paginatedNews = paginatedData.value;
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`);
+    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`,{
+     method : "GET",
+     headers: {'Content-Type':'application/json'},
+     credentials:'include',
+     
+   });
     element.image = imageResponse.url;
     return element;
   }));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
-}
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+ }
 const replaceSpace = (words) => {
   console.log(words);
   if (words !== null && words !== undefined) {
@@ -123,12 +132,16 @@ const replaceSpace = (words) => {
   console.log('finished');;
 }
 const fetchData = async () => {
-  
-  const response = await fetch(`http://localhost:3500/news`);
+  try {
+     const response = await fetch(`http://localhost:3500/news`);
   news.value = await response.json();
    console.log(news.value)
  
   await updateImageUrls();
+  } catch (error) {
+    
+  }
+ 
 }
 
 onMounted(fetchData,);

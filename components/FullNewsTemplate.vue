@@ -41,8 +41,18 @@ const route = useRoute();
 const newsId = route.params.title;
 
 onMounted(async () => {
-    const response = await fetch(`http://localhost:3500/${props.endpoint}`);
-    allNews.value = await response.json();
+    try {
+     const response = await fetch(`http://localhost:3500/${props.endpoint}`,{
+     method : "GET",
+     headers: {'Content-Type':'application/json'},
+     credentials:'include',
+     
+   });
+    allNews.value = await response.json();   
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+    
    
   
 });
