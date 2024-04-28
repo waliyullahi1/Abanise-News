@@ -133,7 +133,7 @@ const replaceSpace = (words) => {
 }
 const fetchData = async () => {
   try {
-     const response = await fetch(`http://localhost:3500/news`);
+     const response = await fetch(`https://new.abaniseedu.com/news`);
   news.value = await response.json();
    console.log(news.value)
  

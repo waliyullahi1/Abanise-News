@@ -146,7 +146,7 @@ const updateImageUrls = async () => {
   try {
     let paginatedNews = paginatedData.value;
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/${props.endpoint}/${element.image}`);
+    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
     element.image = imageResponse.url;
     return element;
   }));
@@ -161,7 +161,7 @@ const updateImageUrls = async () => {
 const fetchData = async () => {
   try {
     loading = true;
-  const response = await fetch(`http://localhost:3500/${props.endpoint}`,{
+  const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`,{
      method : "GET",
      headers: {'Content-Type':'application/json'},
      credentials:'include',
@@ -217,8 +217,8 @@ const goToPage = async(pageNumber) => {
     let paginatedNews = paginatedData.value;
     console.log('ffff');
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    if (!element.image.includes('http://localhost:350')) {
-       const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`);
+    if (!element.image.includes('https://new.abaniseedu.com/')) {
+       const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
     element.image = imageResponse.url;
     return element;
     }

@@ -119,7 +119,7 @@ const updateImageUrls = async () => {
 
 const fetchData = async () => {
   try {
-   const response = await fetch(`http://localhost:3500/${props.endpoint}`,{
+   const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`,{
      method : "GET",
      headers: {'Content-Type':'application/json'},
      credentials:'include',
