@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="  p">
-                      <p v-html="truncateText(extractFirstElements(item.content))" class=" text-[14px]  fn  divClass">
+                      <p v-html="truncateText(extractFirstElements(item.content))" class=" text-[14px] max-h-32  fn  divClass">
                       </p>
 
                       <NuxtLink target="_blank" :to="`${props.routes}/${item.route}`">
@@ -70,8 +70,15 @@
                       :to="{ path: '/news', query: { page: currentPage - 1 } }">Previous </nuxt-link>
                
                   </div> -->
+                  <div  @click=" goToPage()" class="  flex text-[14px] gap-2">
+                    <nuxt-link class="py-1 text-[13px] px-4" :to="{ path: `/${props.routes}`, query: { page: currentPage + 1 } }">Next
+                    </nuxt-link>
+                    <nuxt-link class="py-1 text-[13px] px-4"
+                      :to="{ path: `/${props.routes}`, query: { page: currentPage - 1 } }">Previous </nuxt-link>
                
-              <div class=" flex gap-4 div-class  overflow-scroll">
+                  </div>
+               
+              <!-- <div class=" flex gap-4 div-class  overflow-scroll">
                 <button class="   flex " v-for="number in totalPages" :key="number" @click="updateImageUrls()">
                   <nuxt-link class="h-fit text-[18px] font-medium  bg-transparent bg-none"
                     :to="{ path: `${props.routes}`, query: { page: number } }">
@@ -79,7 +86,7 @@
                   </nuxt-link>
 
                 </button>
-              </div>
+              </div> -->
 
             </div>
 

@@ -1,6 +1,6 @@
 <template>
   <div id="footer" class="">
-    <div class=" overflow-hidden w-fit font-[Poppins] animate-bounce right-[1rem] bottom-[3rem] 0 top- flex justify-end ">
+    <div class=" overflow-hidden w-fit  fixed animate-bounce right-[1rem] bottom-[3rem]  flex justify-end ">
      <div class="bg- bg-green-600 cursor-pointer shadow-[90px] rounded-full p-2">
        <a href="https://wa.me/message/SRWH2WAPTXUAN1">
         <img class="w-[50px] group  hover:scale-105 f" src="@/assets/image/whatsapps.svg"/>

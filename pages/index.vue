@@ -43,8 +43,14 @@
 
               <div class="flex w-1/2">
 
-
-                <div class=" flex  flex gap-4 div-class  overflow-scroll gap-4 =">
+                 <div  @click=" goToPage()" class="  flex text-[14px] gap-2">
+                    <nuxt-link class="py-1 text-[13px] px-4" :to="{ path: '/', query: { page: currentPage + 1 } }">Next
+                    </nuxt-link>
+                    <nuxt-link class="py-1 text-[13px] px-4"
+                      :to="{ path: '/', query: { page: currentPage - 1 } }">Previous </nuxt-link>
+               
+                  </div>
+                <!-- <div class=" flex   gap-4 div-class  overflow-scroll gap-4 =">
                   <button class="   flex " v-for="number in totalPages" :key="number" @click="goToPage(number)">
                     <nuxt-link class="h-fit text-[18px] font-medium " :to="{ path: '/', query: { page: number } }">
                       <p :class="{ 'bg-primary text-white': currentPage === number, 'bg-white': currentPage !== number }"
@@ -52,7 +58,7 @@
                     </nuxt-link>
 
                   </button>
-                </div>
+                </div> -->
 
               </div>
 
@@ -108,7 +114,7 @@ const updateImageUrls = async () => {
   try {
      let paginatedNews = paginatedData.value;
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`,{
+    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`,{
      method : "GET",
      headers: {'Content-Type':'application/json'},
      credentials:'include',
@@ -166,8 +172,8 @@ const goToPage = async (pageNumber) => {
   let paginatedNews = paginatedData.value;
   console.log('ffff');
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    if (!element.image.includes('http://localhost:350')) {
-      const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`);
+    if (!element.image.includes('https://new.abaniseedu.com')) {
+      const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
       element.image = imageResponse.url;
       return element;
     }

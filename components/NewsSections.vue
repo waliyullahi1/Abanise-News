@@ -101,7 +101,7 @@ const updateImageUrls = async () => {
   let paginatedNews = paginatedData.value;
   try {
     const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`,{
+    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`,{
      method : "GET",
      headers: {'Content-Type':'application/json'},
      credentials:'include',
@@ -164,7 +164,20 @@ const truncateText = (text) => {
   }
  
 }
+const goToPage = async (pageNumber) => {
+  console.log();
 
+  let paginatedNews = paginatedData.value;
+  console.log('ffff');
+  const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
+    if (!element.image.includes('https://new.abaniseedu.com')) {
+      const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
+      element.image = imageResponse.url;
+      return element;
+    }
+    news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
+  }));
+};
 
 </script>
 
