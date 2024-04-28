@@ -101,7 +101,7 @@ const updateImageUrls = async () => {
   let paginatedNews = paginatedData.value;
   try {
     const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`http://localhost:3500/news/${element.image}`,{
+    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`,{
      method : "GET",
      headers: {'Content-Type':'application/json'},
      credentials:'include',
