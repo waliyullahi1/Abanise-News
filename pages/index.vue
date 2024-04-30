@@ -35,7 +35,7 @@
 
 
 
-
+                <Adsbygoogle />
               </div>
 
             </div>
@@ -62,7 +62,7 @@
 
               </div>
 
-
+              <Adsbygoogle />
 
               <div>
                 <p class="text-[14px] font-medium">Page {{ currentPage }} of {{ totalPages }}</p>
@@ -73,11 +73,11 @@
 
         </div>
 
-
+       
       </section>
     </div>
 
-
+    <Adsbygoogle />
     <NewsSections :myProp="sectionpaginatedData" newstype="Admission" :endpoint="`admissionNews`" header="Latest Admission"></NewsSections> 
     <NewsSections  newstype="jamb" :endpoint="`jambNews`" header="Jamb"></NewsSections> 
     <NavigationFooter></NavigationFooter>

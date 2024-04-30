@@ -2,6 +2,7 @@
   <div class=" overflow-x-hidden">
 
     <NewsHeader></NewsHeader>
+    <Adsbygoogle />
     <div class="  pt-36">
       <TableLatestNews class="  text-[poppins] "></TableLatestNews>
     <section class=" lg:w-[88%] w-[96%] mx-auto">
@@ -106,7 +107,7 @@
     </section>
     </div>
     
-
+    <Adsbygoogle />
     <NavigationLoadingJs :isJsFinishedRun="loading"  ></NavigationLoadingJs>
 
 
