@@ -39,23 +39,21 @@ let allNews = ref({
 
 const route = useRoute();
 const newsId = route.params.title;
-
-onMounted(async () => {
-    try {
-     const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`,{
-     method : "GET",
-     headers: {'Content-Type':'application/json'},
-     credentials:'include',
-     
-   });
-    allNews.value = await response.json();   
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
+const fetchData = async () => {
+  try {
+     const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`);
+     allNews.value = await response.json();
+ 
+    console.log(allNews.value.title);
+  } catch (error) {
     
-   
-  
+  }
+
+}
+onMounted(async () => {
+  fetchData()
 });
+
 </script>
 
 <style>
