@@ -42,7 +42,7 @@
                 class="flex gap-2 justify-center  items-center">
                
                   <div class=" sm:w-2/5 w-20 group  py-3 flex justify-center items-center ">
-                    <NuxtLink target="_blank" :to="`${props.newstype}/${news[0].route}`"
+                    <NuxtLink target="_blank" :to="`${props.newstype}/${item.route}`"
                       class=" grou bg-black  gap-2 m overflow-hidden  flex justify-center items-center h ">
                       <div class=" hfull  w-full"></div>
                       <img v-bind:src="item.image" class="v hover:opacity-30 duration-500  " alt="">
@@ -54,7 +54,7 @@
                   </div>
                
                 <div class=" w-3/5">
-                  <NuxtLink target="_blank" :to="`${props.newstype}/${news[0].route}`">
+                  <NuxtLink target="_blank" :to="`${props.newstype}/${item.route}`">
 
                     <h3 class=" text-[14px] sm:py-4 cursor-pointer hover:text-green-700   px-2 font-[500]">{{ item.title
                       }}</h3>
@@ -80,6 +80,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import axios from 'axios';
 
 const props = defineProps({
   myProp: Array,
@@ -101,15 +102,10 @@ const updateImageUrls = async () => {
   let paginatedNews = paginatedData.value;
   try {
     const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`,{
-     method : "GET",
-     headers: {'Content-Type':'application/json'},
-     credentials:'include',
-     
-   });
-    element.image = imageResponse.url;
-    return element;
-  }));
+  const imageUrl = `https://new.abaniseedu.com/news/${element.image}`;
+  element.image = imageUrl;
+  return element;
+}));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
 
   } catch (error) {
@@ -119,13 +115,8 @@ const updateImageUrls = async () => {
 
 const fetchData = async () => {
   try {
-   const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`,{
-     method : "GET",
-     headers: {'Content-Type':'application/json'},
-     credentials:'include',
-     
-   });
-  news.value = await response.json();
+   const response = await axios.get(`https://new.abaniseedu.com/${props.endpoint}`);
+  news.value = await response.data;
   await updateImageUrls(); 
   } catch (error) {
     

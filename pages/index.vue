@@ -87,6 +87,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';
 
 
 
@@ -113,16 +114,11 @@ const paginatedData = computed(() => {
 const updateImageUrls = async () => {
   try {
      let paginatedNews = paginatedData.value;
-  const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`,{
-     method : "GET",
-     headers: {'Content-Type':'application/json'},
-     credentials:'include',
-     
-   });
-    element.image = imageResponse.url;
-    return element;
-  }));
+     const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
+  const imageUrl = `https://new.abaniseedu.com/news/${element.image}`;
+  element.image = imageUrl;
+  return element;
+}));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
 
   } catch (error) {
@@ -139,8 +135,8 @@ const replaceSpace = (words) => {
 }
 const fetchData = async () => {
   try {
-     const response = await fetch(`https://new.abaniseedu.com/news`);
-  news.value = await response.json();
+     const response = await axios.get(`https://new.abaniseedu.com/news`);
+  news.value = await response.data;
    console.log(news.value)
  
   await updateImageUrls();
@@ -173,8 +169,8 @@ const goToPage = async (pageNumber) => {
   console.log('ffff');
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
     if (!element.image.includes('https://new.abaniseedu.com')) {
-      const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
-      element.image = imageResponse.url;
+      const imageUrl = `https://new.abaniseedu.com/news/${element.image}`;
+  element.image = imageUrl;
       return element;
     }
     news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);

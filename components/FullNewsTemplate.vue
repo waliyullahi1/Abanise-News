@@ -26,7 +26,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-
+import axios from 'axios'
 const props = defineProps({
   
   endpoint:String
@@ -41,10 +41,10 @@ const route = useRoute();
 const newsId = route.params.title;
 const fetchData = async () => {
   try {
-     const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`);
-     allNews.value = await response.json();
- 
-    console.log(allNews.value.title);
+     const response = await axios.get(`https://new.abaniseedu.com/${props.endpoint}`);
+   const data  = await response.data
+   allNews.value = data[0]
+   console.log(allNews.value);
   } catch (error) {
     
   }

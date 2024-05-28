@@ -117,6 +117,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios'
 let loading = false
 
 const props = defineProps({
@@ -153,11 +154,11 @@ const paginatedData = computed(() => {
 const updateImageUrls = async () => {
   try {
     let paginatedNews = paginatedData.value;
-  const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
-    const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
-    element.image = imageResponse.url;
-    return element;
-  }));
+    const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
+  const imageUrl = `https://new.abaniseedu.com/news/${element.image}`;
+  element.image = imageUrl;
+  return element;
+}));
   news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);
 
     // parse the JSON
@@ -169,13 +170,8 @@ const updateImageUrls = async () => {
 const fetchData = async () => {
   try {
     loading = true;
-  const response = await fetch(`https://new.abaniseedu.com/${props.endpoint}`,{
-     method : "GET",
-     headers: {'Content-Type':'application/json'},
-     credentials:'include',
-     
-   });
-  news.value = await response.json();
+  const response = await axios.get(`https://new.abaniseedu.com/${props.endpoint}`)
+  news.value = await response.data;
   await updateImageUrls();
   loading = false;
    console.log(loading.value);
@@ -226,8 +222,8 @@ const goToPage = async(pageNumber) => {
     console.log('ffff');
   const updatedNews = await Promise.all(paginatedNews.map(async (element) => {
     if (!element.image.includes('https://new.abaniseedu.com/')) {
-       const imageResponse = await fetch(`https://new.abaniseedu.com/news/${element.image}`);
-    element.image = imageResponse.url;
+      const imageUrl = `https://new.abaniseedu.com/news/${element.image}`;
+  element.image = imageUrl;
     return element;
     }
     news.value = news.value.map(item => updatedNews.find(updatedItem => updatedItem._id === item._id) || item);

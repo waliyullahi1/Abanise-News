@@ -18,6 +18,7 @@
   <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import axios from 'axios';
 
 
 
@@ -38,8 +39,8 @@ const skip = (page - 1) * limit
 
 const fetchData = async () => {
   try {
-     const response = await fetch(`https://new.abaniseedu.com/news`);
-  news.value = await response.json();
+     const response = await axios(`https://new.abaniseedu.com/news`);
+  news.value = await response.data;
  
   currentPage.value = page 
   } catch (error) {
