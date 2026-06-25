@@ -13,11 +13,11 @@
           <div class="md:w-[ w-full gap-2">
            
             
-            <div class="w-full border-b-4 h-fit border-b-primary px-1 sm:px-5 py-3 mt-2  bg-white">
+            <div class="w-full border-b-2 h-fit border-b-primary px-1 sm:px-5 py-3 mt-2  bg-white">
               <!-- LOADING -->
               <h2 class="text-4xl  font-bebas font-medium font-medium">{{ props.header }}</h2>
               <p class=" w-full text-[15px]">{{ props.paragraph }}</p>
-              <div class="  w-full h-1 bg-slate-500"></div>
+              <div class="  w-full h-[2px] bg-slate-300"></div>
               <!-- LOADING -->
               <div v-if="pending" class="grid grid-cols-1 gap-6 w-full mt-6">
                 <div
