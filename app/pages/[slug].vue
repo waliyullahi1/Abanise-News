@@ -6,7 +6,7 @@
      
 
       <div class=" lg:col-span-2 mx-2">
-        <div class="text-xl md:w-[70%] w-full sm:mt-0 mt-32">
+        <div class="text-xl md:w-[70%] w-full ">
           
           <!-- LOADING -->
           <div v-if="pending" class="mt-5 py-5  w-full px-2">
@@ -19,7 +19,7 @@
           </div>
 
           <!-- NEWS -->
-          <div v-else class="mt-5 sm:py-5 py-5  w-full px-2">
+          <div v-else class="  w-full px-2">
             <h1 class="mb-4 text-3xl font-bold font-bebas">
               {{ allNews?.data?.title }}
             </h1>

@@ -18,7 +18,8 @@
         <div class="grid lg:grid-cols-12 gap-6">
 
           <!-- LEFT SIDEBAR -->
-          <aside class="lg:col-span-3">
+          
+          <aside class="lg:col-span-3 lg:block  hidden">
             <div class="bg-white p-1 sm:p-5 rounded-xl shadow-sm">
               <h2 class="text-2xl font-bold mb-5">
                 Latest Updates
@@ -42,6 +43,10 @@
               </div>
             </div>
           </aside>
+          <div class="block  lg:hidden ">
+           <TableLatestNews class="text-[poppins]" />
+          </div>
+          
 
           <!-- FEATURED NEWS -->
           <section class="lg:col-span-6">
@@ -72,7 +77,7 @@
                   </span>
 
                   <h1
-                    class="mt-4 text-xl sm:text-3xl md:text-5xl font-black text-white leading-tight"
+                    class="mt-4 text-xl sm:text-2xl md:text-4xl font-black text-white leading-tight"
                   >
                     {{ news?.data[0]?.title }}
                   </h1>

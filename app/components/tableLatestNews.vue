@@ -20,7 +20,7 @@
             :key="item._id || item.slug"
             :to="`${item.slug}`"
             target="_blank"
-            class="flex gap-3 p-3 hover:bg-gray-50 transition"
+            class="flex gap-3 sm:p-3 p-1 hover:bg-gray-50 transition"
           >
             <img
               :src="getImage(item.image)"

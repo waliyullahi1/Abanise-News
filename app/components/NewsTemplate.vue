@@ -18,8 +18,41 @@
               <h2 class="text-4xl  font-bebas font-medium font-medium">{{ props.header }}</h2>
               <p class=" w-full text-[15px]">{{ props.paragraph }}</p>
               <div class="  w-full h-1 bg-slate-500"></div>
-              <div v-if="pending" class="py-10 text-center text-gray-500">
-                Loading news...
+              <!-- LOADING -->
+              <div v-if="pending" class="grid grid-cols-1 gap-6 w-full mt-6">
+                <div
+                  v-for="n in 6"
+                  :key="n"
+                  class="sm:block gap-3 p-2 border-b-2 py-8 animate-pulse"
+                >
+                  <div class="h-full">
+                    <!-- title skeleton -->
+                    <div class="space-y-3 mb-4">
+                      <div class="h-6 bg-gray-200 rounded w-[90%]"></div>
+                      <div class="h-6 bg-gray-200 rounded w-[70%]"></div>
+                    </div>
+
+                    <div class="sm:gap-6 gap-3">
+                      <!-- image skeleton -->
+                      <div class="sm:px-5 float-left mr-4 mb-3">
+                        <div class="w-72 h-40 bg-gray-200 rounded-md"></div>
+                      </div>
+
+                      <!-- excerpt skeleton -->
+                      <div class="space-y-3">
+                        <div class="h-4 bg-gray-200 rounded w-full"></div>
+                        <div class="h-4 bg-gray-200 rounded w-[95%]"></div>
+                        <div class="h-4 bg-gray-200 rounded w-[92%]"></div>
+                        <div class="h-4 bg-gray-200 rounded w-[85%]"></div>
+
+                        <!-- button skeleton -->
+                        <div class="pt-2">
+                          <div class="h-9 w-28 bg-gray-200 rounded"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- ERROR -->
