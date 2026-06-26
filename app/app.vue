@@ -1,6 +1,10 @@
 <script setup>
 
 useHead({
+  htmlAttrs: {
+    lang: 'en'
+  },
+
   link: [
     {
       rel: 'icon',
@@ -9,17 +13,54 @@ useHead({
     }
   ]
 })
+
 useSeoMeta({
-title: ' Real Estate company in Nigeria',
-description: "Africa's leading real estate marketplace, connecting buyers with trusted sellers and professional real estate agents ",
-ogTitle: 'Abanise Real Estate | Your Trusted Property Marketplace',
-ogDescription: "Africa's leading real estate marketplace, connecting buyers with trusted sellers and professional real estate agents",
-ogImage: 'https://www.abanise.com/image/ogimage.png',
-ogType: 'website',
-twitterCard: 'summary_large_image',
-twitterTitle: 'Real Estate company in Nigeria',
-twitterDescription: "Africa's leading real estate marketplace, connecting buyers with trusted sellers and professional real estate agents ",
-twitterImage: 'https://www.abanise.com/image/ogimage.png'
+  // Basic SEO
+  title: 'Abanise News | Latest Education News, Admissions, JAMB & Scholarships',
+  description:
+    'Abanise News is your trusted source for the latest education news in Nigeria. Get updates on admissions, JAMB, Post-UTME, WAEC, NECO, O\'Level, NYSC, scholarships, universities, polytechnics, colleges of education and school announcements.',
+
+  keywords:
+    'Abanise News, Education News Nigeria, Admission News, JAMB, Post UTME, WAEC, NECO, O Level, NYSC, Scholarships, Universities, Polytechnic, College of Education, School News, Nigerian Education',
+
+  author: 'Abanise News',
+
+  robots: 'index, follow',
+
+  // Open Graph
+  ogTitle:
+    'Abanise News | Nigeria\'s Trusted Education News Platform',
+
+  ogDescription:
+    'Stay updated with the latest admission news, JAMB updates, Post-UTME screening forms, WAEC, NECO, O\'Level, scholarships, NYSC and education news across Nigeria.',
+
+  ogImage:
+    'https://news.abaniseedu.com/ogimage',
+
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+
+  ogType: 'website',
+
+  ogSiteName: 'Abanise News',
+
+  ogLocale: 'en_NG',
+
+  ogUrl: 'https://news.abaniseedu.com',
+
+  // Twitter
+  twitterCard: 'summary_large_image',
+
+  twitterTitle:
+    'Abanise News | Latest Education News in Nigeria',
+
+  twitterDescription:
+    'Latest Nigerian education news, admissions, JAMB, Post-UTME, WAEC, NECO, scholarships, NYSC and university updates.',
+
+  twitterImage:
+    'https://news.abaniseedu.com/ogimage.png',
+
+  twitterSite: '@abanisenews'
 })
 
 </script>

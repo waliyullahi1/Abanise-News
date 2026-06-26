@@ -17,57 +17,40 @@ export default defineNuxtConfig({
     url: 'https://abanise.com'
   },
 
-// sitemap: {
-//     discoverImages: false,
+sitemap: {
+    discoverImages: false,
 
-//   exclude: [
-//     '/howiswork',
-//     '/designto',
-//     'profiledesign',
-//     '/resetpassword',
-//     '/ogImage/**',
-//      '/ogProfile/**',
-//     '/admin/**',
+ 
+  urls: async () => {
+    const response = await fetch(
+      'www.news.api.abanise.com/news/sitemap'
+    ).then(res => res.json())
+     
+    const staticRoutes = [
+      '/',
+      '/category/admission',
+      '/category/post-utme',
+      '/category/jamb',
+      '/category/olevel',
+      '/category/scholarships',
+    ]
 
-//     '/user/**'
-//   ],
-//   urls: async () => {
-//     const response = await fetch(
-//       'https://www.api.abanise.com/property/sitemap'
-//     ).then(res => res.json())
-//      const agentResponse = await fetch(
-//       'https://www.api.abanise.com/profile/sitemap'
-//     ).then(res => res.json())
-//     const staticRoutes = [
-//       '/about-us',
-//       '/contact-us',
-//       '/privacy-policy',
-//       '/resetpassword',
-//       '/auth?type=register-page',
-//       '/auth?type=login-page',
-//       '/terms-and-conditions'
-//     ]
+    const newsroute = (response.data || []).map(
+      (news: any) => ({
+        loc: `/${news.slug}`
+      })
+    )
+    
 
-//     const propertyRoutes = (response.data || []).map(
-//       (property: any) => ({
-//         loc: `/property/${property.slug}`
-//       })
-//     )
-//     const  profileRoutes = (agentResponse.data || []).map(
-//       (profile: any) => ({
-//         loc:`/profile/${profile.userId}`
-//       })
-//     )
-
-//     return [
-//       ...staticRoutes.map(route => ({
-//         loc: route
-//       })),
-//       ...profileRoutes,
-//       ...propertyRoutes
-//     ]
-//   }
-// },
+    return [
+      ...staticRoutes.map(route => ({
+        loc: route
+      })),
+      ...newsroute,
+   
+    ]
+  }
+},
 
   pages: true,
 

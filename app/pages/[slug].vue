@@ -80,6 +80,114 @@ const {
     watch: [slug]
   }
 )
+
+
+
+useHead(() => ({
+  htmlAttrs: {
+    lang: 'en'
+  },
+
+  title: news.value.title
+    ? `${news.value.title} | Abanise News`
+    : 'Abanise News',
+
+  link: [
+    {
+      rel: 'icon',
+      type: 'image/png',
+      href: '/abanisee.png'
+    },
+    {
+      rel: 'canonical',
+      href: `https://news.abaniseedu.com/${slug.value}`
+    }
+  ]
+}))
+
+useSeoMeta(() => {
+  const title =
+    news.value.title ||
+    'Abanise News | Latest Education News'
+
+  const description =
+    news.value.excerpt ||
+    news.value.content
+      ?.replace(/<[^>]*>/g, '')
+      ?.substring(0, 160) ||
+    'Latest education news in Nigeria.'
+
+  const image =
+    news.value.image ||
+    'https://news.abaniseedu.com/ogimage.png'
+
+  const url = `https://news.abaniseedu.com/${slug.value}`
+
+  return {
+    title,
+
+    description,
+
+    keywords: [
+      title,
+      news.value.category,
+      'Education News',
+      'Admission',
+      'JAMB',
+      'Post UTME',
+      'WAEC',
+      'NECO',
+      'Scholarships',
+      'NYSC',
+      'Nigeria'
+    ]
+      .filter(Boolean)
+      .join(', '),
+
+    author: 'Abanise News',
+
+    robots: 'index, follow',
+
+    // Open Graph
+    ogTitle: title,
+
+    ogDescription: description,
+
+    ogImage: image,
+
+    ogImageWidth: '1200',
+
+    ogImageHeight: '630',
+
+    ogType: 'article',
+
+    ogSiteName: 'Abanise News',
+
+    ogLocale: 'en_NG',
+
+    ogUrl: url,
+
+    // Article
+    articlePublishedTime: news.value.datePublished,
+
+    articleModifiedTime: news.value.updatedAt,
+
+    articleSection: Array.isArray(news.value.category)
+      ? news.value.category.join(', ')
+      : news.value.category,
+
+    // Twitter
+    twitterCard: 'summary_large_image',
+
+    twitterTitle: title,
+
+    twitterDescription: description,
+
+    twitterImage: image,
+
+    twitterSite: '@abanisenews'
+  }
+})
 </script>
 
 <style>
