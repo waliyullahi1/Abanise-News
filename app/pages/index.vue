@@ -1,6 +1,7 @@
 
 <template>
   <div>
+
     <NewsHeader />
   <div v-if="pending" class="mt-5 py-5  w-full px-2">
             <p>Loading news...</p>
@@ -45,6 +46,7 @@
           </aside>
           <div class="block  lg:hidden ">
            <TableLatestNews class="text-[poppins]" />
+           <AdvertisingBanner1 />
           </div>
           
 
@@ -237,7 +239,10 @@
             endpoint="JAMB"
             header="JAMB Updates"
           />
-
+          <div class="  md:w-[70%]">
+           <AdvertisingBanner1 class=" w-[80%] " />
+          </div>
+         
           <NewsSections
             newstype="Scholarship"
             endpoint="Scholarships"

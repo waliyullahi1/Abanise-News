@@ -2,11 +2,12 @@
   <div>
     <NewsHeader />
 
-    <div class="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
      
 
-      <div class=" lg:col-span-2 mx-2">
-        <div class="text-xl md:w-[70%] w-full ">
+      <div class=" md:col-span-2 mx-2">
+ 
+        <div class="text-xl w-full ">
           
           <!-- LOADING -->
           <div v-if="pending" class="mt-5 py-5  w-full px-2">
@@ -23,16 +24,29 @@
             <h1 class="mb-4 text-3xl font-bold font-bebas">
               {{ allNews?.data?.title }}
             </h1>
-
+                <div class=" sm:flex  mb-5  md:w-[70%]">
+           <AdvertisingBanner1 class=" w-[80%] " />
+          </div>
             <div
               v-html="allNews?.data?.content"
               class="entry tess text-[15px] pb-1"
             ></div>
+
+
+            <div class="  md:w-[70%]">
+           <AdvertisingBanner1 class=" w-[80%] " />
+          </div>
           </div>
         </div>
       </div>
-      <div class="hidden  top-10 sticky -64 lg:block lg:col-span-1 self-start">
+      <div class="hidden  top-10 sticky -64 md:block lg:col-span-1 self-start">
+      <div class="  md:w%]">
+           <AdvertisingBanner1 class=" " />
+          </div>
        <TableLatestNews class="text-[poppins]" />
+       <div class="  md:w-[%]">
+           <AdvertisingBanner1 class=" w-[] " />
+          </div>
       </div>
     </div>
 
@@ -45,8 +59,8 @@ import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
-const title = route.params.route;
-console.log(title);
+
+
 /* =========================
    GET SLUG FROM ROUTE
 ========================= */
@@ -68,6 +82,11 @@ const {
     })
 
     if (!res?.success) {
+        console.log(res?.status);
+        if (res.status === 404) {
+            
+            return await navigateTo('/')
+     }
       throw createError({
         statusCode: 500,
         statusMessage: res?.message || 'Failed to fetch news'
@@ -81,15 +100,17 @@ const {
   }
 )
 
-
+if (!allNews.value) {
+  await navigateTo('/')
+}
 
 useHead(() => ({
   htmlAttrs: {
     lang: 'en'
   },
 
-  title: news.value.title
-    ? `${news.value.title} | Abanise News`
+  title: allNews?.value?.title
+    ? `${allNews?.value?.title} | Abanise News`
     : 'Abanise News',
 
   link: [
@@ -107,18 +128,18 @@ useHead(() => ({
 
 useSeoMeta(() => {
   const title =
-    news.value.title ||
+    allNews?.value?.title ||
     'Abanise News | Latest Education News'
 
   const description =
-    news.value.excerpt ||
-    news.value.content
+    allNews?.value?.excerpt ||
+    allNews?.value?.content
       ?.replace(/<[^>]*>/g, '')
       ?.substring(0, 160) ||
     'Latest education news in Nigeria.'
 
   const image =
-    news.value.image ||
+    allNews?.value?.image ||
     'https://news.abaniseedu.com/ogimage.png'
 
   const url = `https://news.abaniseedu.com/${slug.value}`
@@ -130,7 +151,7 @@ useSeoMeta(() => {
 
     keywords: [
       title,
-      news.value.category,
+      allNews?.value?.category,
       'Education News',
       'Admission',
       'JAMB',
@@ -168,13 +189,13 @@ useSeoMeta(() => {
     ogUrl: url,
 
     // Article
-    articlePublishedTime: news.value.datePublished,
+    articlePublishedTime: news?.value?.datePublished,
 
-    articleModifiedTime: news.value.updatedAt,
+    articleModifiedTime: news?.value?.updatedAt,
 
-    articleSection: Array.isArray(news.value.category)
-      ? news.value.category.join(', ')
-      : news.value.category,
+    articleSection: Array.isArray(news?.value?.category)
+      ? news?.value?.category.join(', ')
+      : news?.value?.category,
 
     // Twitter
     twitterCard: 'summary_large_image',

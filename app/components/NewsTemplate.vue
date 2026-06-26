@@ -160,6 +160,9 @@
             <div class="">
            
             <TableLatestNews class="text-[poppins]" />
+              <div class="  m">
+           <AdvertisingBanner1 class=" w-full " />
+          </div>
             </div>
           
          </div>

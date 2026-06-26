@@ -67,6 +67,10 @@ useSeoMeta({
 
 
 <template>
+<AdvertisingBanner
+    image="/banner4.png"
+    :duration="1"
+  />
 
   <NuxtLayout>
     <NuxtPage />
