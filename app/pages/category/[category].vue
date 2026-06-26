@@ -34,14 +34,14 @@ const category = computed(() => {
 
 
 const currentUrl = computed(() => {
-  return `https://news.abaniseedu.com/category/${category.value}`
+  return `hhttps://www.news.abanise.com/category/${category.value}`
 })
 
 const categoryImage = computed(() => {
   const firstNews = news.value?.[0]
 
   if (!firstNews?.image) {
-    return 'https://news.abaniseedu.com/ogimage.png'
+    return 'hhttps://www.news.abanise.com/ogimage.png'
   }
 
   if (
@@ -51,7 +51,7 @@ const categoryImage = computed(() => {
     return firstNews.image
   }
 
-  return `https://new.abaniseedu.com/news/${firstNews.image}`
+  return `https://www.news.abanise.com/abanisee.png/category/${firstNews.image}`
 })
 
 useSeoMeta({
@@ -104,7 +104,7 @@ useHead({
           isPartOf: {
             "@type": "WebSite",
             name: "Abanise News",
-            url: "https://news.abaniseedu.com"
+            url: "https://www.news.abanise.com/abanisee.png"
           },
 
           publisher: {
@@ -113,7 +113,7 @@ useHead({
 
             logo: {
               "@type": "ImageObject",
-              url: "https://news.abaniseedu.com/abanisee.png"
+              url: "https://www.news.abanise.com/abanisee.png"
             }
           }
         })

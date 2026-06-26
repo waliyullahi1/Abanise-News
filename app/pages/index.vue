@@ -45,6 +45,9 @@
             </div>
           </aside>
           <div class="block  lg:hidden ">
+          <div class=" sm:flex  mb-5  md:w-[70%]">
+           <AdvertisingBanner1 class=" w-[80%] " />
+          </div>
            <TableLatestNews class="text-[poppins]" />
            <AdvertisingBanner1 />
           </div>

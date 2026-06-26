@@ -121,7 +121,7 @@ useHead(() => ({
     },
     {
       rel: 'canonical',
-      href: `https://news.abaniseedu.com/${slug.value}`
+      href: `hhttps://www.news.abanise.com/${slug.value}`
     }
   ]
 }))
@@ -140,9 +140,9 @@ useSeoMeta(() => {
 
   const image =
     allNews?.value?.image ||
-    'https://news.abaniseedu.com/ogimage.png'
+    'hhttps://www.news.abanise.com/ogimage.png'
 
-  const url = `https://news.abaniseedu.com/${slug.value}`
+  const url = `hhhttps://www.news.abanise.com/${slug.value}`
 
   return {
     title,
