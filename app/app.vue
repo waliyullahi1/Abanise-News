@@ -35,7 +35,7 @@ useSeoMeta({
     'Stay updated with the latest admission news, JAMB updates, Post-UTME screening forms, WAEC, NECO, O\'Level, scholarships, NYSC and education news across Nigeria.',
 
   ogImage:
-    'hhttps://www.news.abanise.com/ogimage.png',
+    'https://www.news.abanise.com/ogimage.png',
 
   ogImageWidth: '1200',
   ogImageHeight: '630',
@@ -46,7 +46,7 @@ useSeoMeta({
 
   ogLocale: 'en_NG',
 
-  ogUrl: 'hhhttps://www.news.abanise.com/ogimage.png',
+  ogUrl: 'https://www.news.abanise.com/ogimage.png',
 
   // Twitter
   twitterCard: 'summary_large_image',
@@ -58,7 +58,7 @@ useSeoMeta({
     'Latest Nigerian education news, admissions, JAMB, Post-UTME, WAEC, NECO, scholarships, NYSC and university updates.',
 
   twitterImage:
-    'hhttps://www.news.abanise.com/ogimage.png',
+    'https://www.news.abanise.com/ogimage.png',
 
   twitterSite: '@abanisenews'
 })

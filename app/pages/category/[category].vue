@@ -34,14 +34,14 @@ const category = computed(() => {
 
 
 const currentUrl = computed(() => {
-  return `hhttps://www.news.abanise.com/category/${category.value}`
+  return `https://www.news.abanise.com/category/${category.value}`
 })
 
 const categoryImage = computed(() => {
   const firstNews = news.value?.[0]
 
   if (!firstNews?.image) {
-    return 'hhttps://www.news.abanise.com/ogimage.png'
+    return 'https://www.news.abanise.com/ogimage.png'
   }
 
   if (
