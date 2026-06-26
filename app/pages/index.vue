@@ -21,6 +21,9 @@
           <!-- LEFT SIDEBAR -->
           
           <aside class="lg:col-span-3 lg:block  hidden">
+          <div class=" sm:flex  mb-5  md:w-[70%]">
+           <AdvertisingBanner1 class=" w-[80%] " />
+          </div>
             <div class="bg-white p-1 sm:p-5 rounded-xl shadow-sm">
               <h2 class="text-2xl font-bold mb-5">
                 Latest Updates
@@ -101,6 +104,9 @@
 
           <!-- POPULAR -->
           <aside class="lg:col-span-3">
+          <div class=" sm:flex  mb-5  ">
+           <AdvertisingBanner1 class=" " />
+          </div>
             <div class="bg-white sm:p-5 p-2 rounded-xl shadow-sm">
               <h2 class="text-2xl font-bold mb-5">
                 Popular Posts
