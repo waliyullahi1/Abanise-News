@@ -35,7 +35,7 @@ useSeoMeta({
     'Stay updated with the latest admission news, JAMB updates, Post-UTME screening forms, WAEC, NECO, O\'Level, scholarships, NYSC and education news across Nigeria.',
 
   ogImage:
-    'https://news.abaniseedu.com/ogimage',
+    'https://news.abaniseedu.com/ogimage.png',
 
   ogImageWidth: '1200',
   ogImageHeight: '630',
